@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/acharkizakaria/number-formatter-plugin.svg?branch=master)](https://travis-ci.org/acharkizakaria/number-formatter-plugin)
+[![NPM][npm-img]][npm-url]
 
 VMTA
 ========
@@ -71,3 +72,5 @@ The passed parameter 'x-vmta' will be automatically removed from the header so t
 delivered email's header will not contain the parameter.
 
 
+[npm-img]: https://nodei.co/npm/haraka-plugin-vmta.png
+[npm-url]: https://www.npmjs.com/package/haraka-plugin-vmta
