@@ -2,8 +2,8 @@
 //------------
 // documentation via: `haraka -h virtual_mta`
 
-//var outbound	= require('./outbound');
-//var constants   = require('haraka-constants');
+var outbound	= require('./outbound');
+var constants   = require('haraka-constants');
 var ip          = require('ip').address(); //Main ip of local server
 var host 	    = require('os').hostname().replace(/\\/, '\\057').replace(/:/, '\\072'); //Server hostname
 var vmta        = null;
