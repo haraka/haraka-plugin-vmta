@@ -1,5 +1,7 @@
 [![Build Status][ci-img]][ci-url]
 [![Code Coverage][cov-img]][cov-url]
+[![Code Climate][clim-img]][clim-url]
+[![Greenkeeper badge][gk-img]][gk-url]
 
 [![NPM][npm-img]][npm-url]
 
@@ -75,7 +77,11 @@ delivered email's header will not contain the parameter.
 
 [ci-img]: https://travis-ci.org/acharkizakaria/haraka-plugin-vmta.svg
 [ci-url]: https://travis-ci.org/acharkizakaria/haraka-plugin-vmta
+[clim-img]: https://codeclimate.com/github/acharkizakaria/haraka-plugin-vmta/badges/gpa.svg
+[clim-url]: https://codeclimate.com/github/acharkizakaria/haraka-plugin-vmta
 [cov-img]: https://codecov.io/gh/acharkizakaria/haraka-plugin-vmta/badge.svg
 [cov-url]: https://codecov.io/gh/acharkizakaria/haraka-plugin-vmta
 [npm-img]: https://nodei.co/npm/haraka-plugin-vmta.png
 [npm-url]: https://www.npmjs.com/package/haraka-plugin-vmta
+[gk-img]: https://badges.greenkeeper.io/acharkizakaria/haraka-plugin-vmta.svg
+[gk-url]: https://greenkeeper.io/
