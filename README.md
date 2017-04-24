@@ -66,7 +66,7 @@ swaks -f youremail@yourdomain.com -t test@example.com -add-header "x-vmta: your_
   -s localhost -p 587 -au testuser -ap testpassword
 
 
-##NOTE
+## NOTE
 The passed parameter 'x-vmta' will be automatically removed from the header so the
 delivered email's header will not contain the parameter.
 
