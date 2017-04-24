@@ -35,7 +35,7 @@ exports.hook_queue_outbound = function (next, connection) {
     var transaction = connection.transaction;
 
     plugin.loginfo("");
-    plugin.loginfo("----------- virtual_mta plugin LOG START -----------");
+    plugin.loginfo("----------- VMTA plugin LOG START -----------");
 
     if ( transaction.header.headers.hasOwnProperty("x-vmta") )
     {
@@ -87,14 +87,14 @@ exports.hook_queue_outbound = function (next, connection) {
 
     //outbound.send_email(connection.transaction, next);
 
-    plugin.loginfo("----------- virtual_mta plugin LOG END -----------");
+    plugin.loginfo("----------- VMTA plugin LOG END -----------");
     plugin.loginfo("");
 };
 
 //Deny with passed message
 var denyWithMsg = function (context, next, msg) {
     context.logerror(msg);
-    context.loginfo("----------- virtual_mta plugin LOG END -----------");
+    context.loginfo("----------- VMTA plugin LOG END -----------");
     context.loginfo("");
 
     return next(DENY, msg);
