@@ -13,7 +13,8 @@ var default_config = {
 
 beforeEach(function (done) {
     //this.outbound = new fixtures.plugin('outbound');
-    this.plugin = new fixtures.plugin('vmta');
+    this.plugin = new fixtures.plugin('index');
+    this.plugin.cfg = default_config;
 
     this.connection = new fixtures.connection.createConnection();
     this.connection.transaction = fixtures.transaction.createTransaction();
@@ -22,7 +23,7 @@ beforeEach(function (done) {
 });
 
 describe('VMTA plugin', function () {
-    it('loads', function (done) {
+    it('load', function (done) {
         assert.ok(this.plugin);
         done();
     });
@@ -34,30 +35,25 @@ var next = function () {
 };
 
 describe('VMTA config file', function () {
-    it('loads vmta.ini from config/vmta.ini', function (done) {
+    it('loads "vmta.ini" from "config/vmta.ini"', function (done) {
         this.plugin.load_vmta_ini();
+
         assert.ok(this.plugin.cfg);
 
         done();
     });
 
     it('Check availability of "x-vmta" inside Header', function (done) {
-        this.plugin.load_vmta_ini();
-
-        //console.log(this.plugin.localAddresses());
-
-        console.log();
-        assert.notDeepEqual('vmta_test', this.connection.transaction.header);
-        done();
-    });
-
-    it('Check availability of "x-vmta" inside Config file', function (done) {
-        this.plugin.load_vmta_ini();
-
         this.connection.transaction.header.add('x-vmta', "vmta_test");
 
-        assert.deepEqual('vmta_test', default_config);
+        assert.ok( this.connection.transaction.header.headers['x-vmta'] );
         done();
     });
+
+    it('Check availability of "mta1" inside Config file', function (done) {
+        assert.ok(this.plugin.cfg['mta1']);
+        done();
+    });
+    //console.log(this.plugin.localAddresses());
 
 });
