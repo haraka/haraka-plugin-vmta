@@ -1,0 +1,43 @@
+{
+  "name": "haraka-plugin-vmta",
+  "version": "0.0.1",
+  "description": "Administer virtual MTAs for the outbound traffic",
+  "main": "vmta.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint *.js test/*.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acharkizakaria/haraka-plugin-vmta.git"
+  },
+  "keywords": [
+    "Haraka",
+    "Plugin",
+    "VMTA",
+    "Virtual",
+    "MTA",
+    "Virtual MTA"
+  ],
+  "author": "“Zakaria <“acharki.zakaria@gmail.com”>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acharkizakaria/haraka-plugin-vmta/issues"
+  },
+  "homepage": "https://github.com/acharkizakaria/haraka-plugin-vmta#readme",
+  "dependencies": {
+    "haraka-constants": "*",
+    "ip": "*"
+  },
+  "devDependencies": {
+    "assert": "*",
+    "coveralls": "^2.13.0",
+    "eslint": "^3.19.0",
+    "eslint-plugin-haraka": "^1.0.5",
+    "eslint-plugin-node": "^4.2.2",
+    "haraka-test-fixtures": "*",
+    "istanbul": "^0.4.5",
+    "mocha": "*",
+    "path": "*"
+  }
+}
