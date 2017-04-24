@@ -51,7 +51,7 @@ describe('VMTA config file', function () {
     });
 
     it('Check availability of "mta1" inside Config file', function (done) {
-        assert.ok(this.plugin.cfg['mta1']);
+        assert.ok(this.plugin.cfg.mta1);
         done();
     });
     //console.log(this.plugin.localAddresses());
