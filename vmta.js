@@ -85,7 +85,7 @@ exports.hook_queue_outbound = function (next, connection) {
     plugin.loginfo("Outbound IP : "+connection.transaction.notes.outbound_ip);
     plugin.loginfo("Outbound HOST : "+connection.transaction.notes.outbound_helo);
 
-    //outbound.send_email(connection.transaction, next);
+    outbound.send_email(connection.transaction, next);
 
     plugin.loginfo("----------- VMTA plugin LOG END -----------");
     plugin.loginfo("");

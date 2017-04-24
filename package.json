@@ -31,10 +31,12 @@
   },
   "devDependencies": {
     "assert": "*",
+    "coveralls": "^2.13.0",
     "eslint": "^3.19.0",
     "eslint-plugin-haraka": "^1.0.5",
     "eslint-plugin-node": "^4.2.2",
     "haraka-test-fixtures": "*",
+    "istanbul": "^0.4.5",
     "mocha": "*",
     "path": "*"
   }

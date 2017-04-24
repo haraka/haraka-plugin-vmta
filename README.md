@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/acharkizakaria/number-formatter-plugin.svg?branch=master)](https://travis-ci.org/acharkizakaria/number-formatter-plugin)
+[![Build Status][ci-img]][ci-url]
+
 [![NPM][npm-img]][npm-url]
 
 VMTA
@@ -71,6 +72,7 @@ swaks -f youremail@yourdomain.com -t test@example.com -add-header "x-vmta: your_
 The passed parameter 'x-vmta' will be automatically removed from the header so the
 delivered email's header will not contain the parameter.
 
-
+[ci-img]: https://travis-ci.org/acharkizakaria/haraka-plugin-vmta.svg
+[ci-url]: https://travis-ci.org/acharkizakaria/haraka-plugin-vmta
 [npm-img]: https://nodei.co/npm/haraka-plugin-vmta.png
 [npm-url]: https://www.npmjs.com/package/haraka-plugin-vmta
