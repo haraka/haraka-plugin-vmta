@@ -1,4 +1,5 @@
 [![Build Status][ci-img]][ci-url]
+[![Code Coverage][cov-img]][cov-url]
 
 [![NPM][npm-img]][npm-url]
 
@@ -50,7 +51,7 @@ e.g :
 Subject: xxxx
 From: yyyy
 ...
-x-vmta: mta_name_1       <<----------- Just add the param to your header
+x-vmta: mta_name_1       <<-------- Just add the param to your header
 ...
 ```
 
@@ -74,5 +75,7 @@ delivered email's header will not contain the parameter.
 
 [ci-img]: https://travis-ci.org/acharkizakaria/haraka-plugin-vmta.svg
 [ci-url]: https://travis-ci.org/acharkizakaria/haraka-plugin-vmta
+[cov-img]: https://codecov.io/gh/acharkizakaria/haraka-plugin-vmta/badge.svg
+[cov-url]: https://codecov.io/gh/acharkizakaria/haraka-plugin-vmta
 [npm-img]: https://nodei.co/npm/haraka-plugin-vmta.png
 [npm-url]: https://www.npmjs.com/package/haraka-plugin-vmta
