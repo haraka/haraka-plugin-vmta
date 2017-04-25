@@ -29,10 +29,10 @@ describe('VMTA plugin', function () {
     });
 });
 
-var next = function () {
+/*var next = function () {
     test.equal(undefined, arguments[0]);
     test.done();
-};
+};/*
 
 describe('VMTA config file', function () {
     it('loads "vmta.ini" from "config/vmta.ini"', function (done) {
