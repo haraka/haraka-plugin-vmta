@@ -75,8 +75,8 @@ swaks -f youremail@yourdomain.com -t test@example.com -add-header "x-vmta: your_
 The passed parameter 'x-vmta' will be automatically removed from the header so the
 delivered email's header will not contain the parameter.
 
-[ci-img]: https://travis-ci.org/acharkizakaria/haraka-plugin-vmta.svg
-[ci-url]: https://travis-ci.org/acharkizakaria/haraka-plugin-vmta
+[ci-img]: https://travis-ci.org/haraka/haraka-plugin-vmta.svg
+[ci-url]: https://travis-ci.org/haraka/haraka-plugin-vmta
 [clim-img]: https://codeclimate.com/github/acharkizakaria/haraka-plugin-vmta/badges/gpa.svg
 [clim-url]: https://codeclimate.com/github/acharkizakaria/haraka-plugin-vmta
 [cov-img]: https://codecov.io/gh/acharkizakaria/haraka-plugin-vmta/badge.svg
