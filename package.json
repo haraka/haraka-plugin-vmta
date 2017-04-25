@@ -1,6 +1,6 @@
 {
   "name": "haraka-plugin-vmta",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Administer virtual MTAs for the outbound traffic",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/acharkizakaria/haraka-plugin-vmta.git"
+    "url": "git+https://github.com/haraka/haraka-plugin-vmta.git"
   },
   "keywords": [
     "Haraka",
@@ -22,9 +22,9 @@
   "author": "“Zakaria <“acharki.zakaria@gmail.com”>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/acharkizakaria/haraka-plugin-vmta/issues"
+    "url": "https://github.com/haraka/haraka-plugin-vmta/issues"
   },
-  "homepage": "https://github.com/acharkizakaria/haraka-plugin-vmta#readme",
+  "homepage": "https://github.com/haraka/haraka-plugin-vmta#readme",
   "dependencies": {
     "haraka-constants": "*",
     "ip": "*"
