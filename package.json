@@ -1,8 +1,8 @@
 {
   "name": "haraka-plugin-vmta",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Administer virtual MTAs for the outbound traffic",
-  "main": "vmta.js",
+  "main": "index.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint *.js test/*.js",
     "test": "mocha"
