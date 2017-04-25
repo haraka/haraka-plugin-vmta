@@ -12,7 +12,6 @@ var default_config = {
 };
 
 beforeEach(function (done) {
-    //this.outbound = new fixtures.plugin('outbound');
     this.plugin = new fixtures.plugin('index');
     this.plugin.cfg = default_config;
 
