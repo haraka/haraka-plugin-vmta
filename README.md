@@ -1,4 +1,5 @@
 [![Build Status][ci-img]][ci-url]
+[![NPM Version][version-img]][version-url]
 [![Code Coverage][cov-img]][cov-url]
 [![Code Climate][clim-img]][clim-url]
 [![Greenkeeper badge][gk-img]][gk-url]
@@ -58,21 +59,21 @@ x-vmta: mta_name_1       <<-------- Just add the param to your header
 ```
 
 
-The 'mta_name_1' in the previous example is one of the VMTAs you should pre-define in
+The `mta_name_1` in the previous example is one of the VMTAs you should pre-define in
 your configuration file `vmta.ini` with simple format as shown in the above section
 'Configuration'.
 
 
 ## Tests
 After enabling the plugin you could test it simply by using the smtp transaction tester
-light-tool 'swaks' using the following command line :
+light-tool `swaks` using the following command line :
 
 swaks -f youremail@yourdomain.com -t test@example.com -add-header "x-vmta: your_vmta_name"  \
   -s localhost -p 587 -au testuser -ap testpassword
 
 
 ## NOTE
-The passed parameter 'x-vmta' will be automatically removed from the header so the
+The passed parameter `x-vmta` will be automatically removed from the header so the
 delivered email's header will not contain the parameter.
 
 [ci-img]: https://travis-ci.org/haraka/haraka-plugin-vmta.svg
@@ -85,3 +86,5 @@ delivered email's header will not contain the parameter.
 [npm-url]: https://www.npmjs.com/package/haraka-plugin-vmta
 [gk-img]: https://badges.greenkeeper.io/acharkizakaria/haraka-plugin-vmta.svg
 [gk-url]: https://greenkeeper.io/
+[version-img]: https://img.shields.io/badge/npm-v0.0.5-blue.svg
+[version-url]: https://www.npmjs.com/package/haraka-plugin-vmta
