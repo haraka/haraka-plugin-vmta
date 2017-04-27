@@ -86,5 +86,5 @@ delivered email's header will not contain the parameter.
 [npm-url]: https://www.npmjs.com/package/haraka-plugin-vmta
 [gk-img]: https://badges.greenkeeper.io/acharkizakaria/haraka-plugin-vmta.svg
 [gk-url]: https://greenkeeper.io/
-[version-img]: https://img.shields.io/badge/npm-v0.0.5-blue.svg
+[version-img]: https://img.shields.io/badge/npm-v0.0.6-blue.svg
 [version-url]: https://www.npmjs.com/package/haraka-plugin-vmta
