@@ -5,7 +5,6 @@ VMTA
 [![GitHub license][gitHub-license-img]][gitHub-license-url]
 [![Code Climate][clim-img]][clim-url]
 [![NPM Version][version-img]][version-url]
-[![Greenkeeper badge][gk-img]][gk-url]
 
 [![NPM][npm-img]][npm-url]
 
@@ -84,7 +83,5 @@ delivered email's header will not contain the parameter.
 [gitHub-license-url]: https://raw.githubusercontent.com/acharkizakaria/haraka-plugin-vmta/master/LICENSE
 [npm-img]: https://nodei.co/npm/haraka-plugin-vmta.png
 [npm-url]: https://www.npmjs.com/package/haraka-plugin-vmta
-[gk-img]: https://badges.greenkeeper.io/acharkizakaria/haraka-plugin-vmta.svg
-[gk-url]: https://greenkeeper.io/
 [version-img]: https://img.shields.io/badge/npm-v0.0.6-blue.svg
 [version-url]: https://www.npmjs.com/package/haraka-plugin-vmta
