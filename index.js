@@ -88,6 +88,9 @@ exports.hook_queue_outbound = function (next, connection) {
     plugin.loginfo("Outbound IP : "+connection.transaction.notes.outbound_ip);
     plugin.loginfo("Outbound HOST : "+connection.transaction.notes.outbound_helo);
 
+    //Adding the header to notes before sent, we may need it in 'delivered/bounce/deffered' hooks
+    connection.transaction.notes.header = connection.transaction.header;
+
     outbound.send_email(connection.transaction, next);
 
     plugin.loginfo("----------- VMTA plugin LOG END -----------");
