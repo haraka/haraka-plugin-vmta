@@ -83,5 +83,5 @@ delivered email's header will not contain the parameter.
 [gitHub-license-url]: https://raw.githubusercontent.com/acharkizakaria/haraka-plugin-vmta/master/LICENSE
 [npm-img]: https://nodei.co/npm/haraka-plugin-vmta.png
 [npm-url]: https://www.npmjs.com/package/haraka-plugin-vmta
-[version-img]: https://img.shields.io/badge/npm-v0.0.6-blue.svg
+[version-img]: https://img.shields.io/badge/npm-v0.5.9-blue.svg
 [version-url]: https://www.npmjs.com/package/haraka-plugin-vmta
