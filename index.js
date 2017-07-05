@@ -46,7 +46,7 @@ exports.outbound = function (next, connection) {
     //Set the flag param 'vmta_checked' to avoid duplicate check in the both hooks
     connection.transaction.notes.vmta_checked = true;
 
-    outbound.send_email(next, connection.transaction, next);
+    outbound.send_email(connection.transaction, next);
 
     this.loginfo("----------- VMTA plugin LOG END -----------");
     this.loginfo("");
