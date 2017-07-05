@@ -46,7 +46,7 @@ exports.outbound = function (next, connection) {
     //Set the flag param 'vmta_checked' to avoid duplicate check in the both hooks
     connection.transaction.notes.vmta_checked = true;
 
-    outbound.send_email(connection.transaction, next);
+    outbound.send_email(next, connection.transaction, next);
 
     this.loginfo("----------- VMTA plugin LOG END -----------");
     this.loginfo("");
@@ -55,7 +55,7 @@ exports.outbound = function (next, connection) {
 exports.before_send = function (next, connection) {
     if ( !connection.transaction.notes.hasOwnProperty("vmta_checked") )
     {
-        checkVmtaParams(this, connection);
+        checkVmtaParams(next, this, connection);
 
         this.loginfo("----------- VMTA plugin LOG END -----------");
         this.loginfo("");
@@ -96,7 +96,7 @@ var localAddresses = function () {
 };
 
 //Check if the 'x-vmta' parameter is passed then retrieve the 'ip/host' else return the default ones
-var checkVmtaParams = function(plugin, connection){
+var checkVmtaParams = function (next, plugin, connection){
     var transaction = connection.transaction;
 
     this.loginfo("");
