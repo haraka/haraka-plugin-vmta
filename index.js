@@ -99,8 +99,8 @@ var localAddresses = function () {
 var checkVmtaParams = function (next, plugin, connection){
     var transaction = connection.transaction;
 
-    this.loginfo("");
-    this.loginfo("----------- VMTA plugin LOG START -----------");
+    plugin.loginfo("");
+    plugin.loginfo("----------- VMTA plugin LOG START -----------");
 
     if ( transaction.header.headers.hasOwnProperty("x-vmta") )
     {
