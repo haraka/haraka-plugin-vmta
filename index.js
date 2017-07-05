@@ -2,11 +2,10 @@
 //------------
 // documentation via: `haraka -h virtual_mta`
 
-//TODO: Uncomment this two lines in real life-----
+//TODO: Uncomment this two lines in the real life-----
 //var outbound	= require('./outbound');
 //var constants = require('haraka-constants');
 //------------------------------------------------
-
 var ip          = require('ip').address(); //Main ip of local server
 var host        = require('os').hostname().replace(/\\/, '\\057').replace(/:/, '\\072'); //Server hostname
 var vmta        = null;
@@ -14,31 +13,94 @@ var cfg;
 
 exports.register = function () {
     var plugin = this;
+
     plugin.load_vmta_ini();
+
+    plugin.register_hook('init_master', 'init_interfaces');
+    plugin.register_hook('init_child', 'init_interfaces');
+    plugin.register_hook('queue_outbound', 'outbound');
+    plugin.register_hook('pre_send_trans_email', 'before_send');
 };
 
 exports.load_vmta_ini = function () {
     var plugin = this;
 
     plugin.loginfo("VMTA configs are fully loaded from 'vmta.ini'.");
+
     cfg = plugin.config.get("vmta.ini", function () {
         plugin.register();
     });
+
     plugin.loginfo(cfg);
 };
 
 //Define localAddresses at start-up
-exports.hook_init_master = exports.hook_init_child = function (next)  {
+exports.init_interfaces = function (next)  {
     server.notes.interfaces = localAddresses();
     return next();
 };
 
-exports.hook_queue_outbound = function (next, connection) {
-    var plugin      = this;
+exports.outbound = function (next, connection) {
+    checkVmtaParams(this, connection);
+
+    //Set the flag param 'vmta_checked' to avoid duplicate check in the both hooks
+    connection.transaction.notes.vmta_checked = true;
+
+    outbound.send_email(connection.transaction, next);
+
+    this.loginfo("----------- VMTA plugin LOG END -----------");
+    this.loginfo("");
+};
+
+exports.before_send = function (next, connection) {
+    if ( !connection.transaction.notes.hasOwnProperty("vmta_checked") )
+    {
+        checkVmtaParams(this, connection);
+
+        this.loginfo("----------- VMTA plugin LOG END -----------");
+        this.loginfo("");
+    }
+
+    return next();
+};
+
+//Deny with passed message
+var denyWithMsg = function (context, next, msg) {
+    context.logerror(msg);
+    context.loginfo("----------- VMTA plugin LOG END -----------");
+    context.loginfo("");
+
+    return next(DENY, msg);
+};
+
+//Get list of local addresses
+var localAddresses = function () {
+    var os = require("os");
+
+    var interfaces = os.networkInterfaces();
+    var addresses = [];
+
+    for (var k in interfaces)
+    {
+        for (var k2 in interfaces[k])
+        {
+            var address = interfaces[k][k2];
+
+            if (address.family === "IPv4" && !address.internal) {
+                addresses.push(address.address);
+            }
+        }
+    }
+
+    return addresses;
+};
+
+//Check if the 'x-vmta' parameter is passed then retrieve the 'ip/host' else return the default ones
+var checkVmtaParams = function(plugin, connection){
     var transaction = connection.transaction;
 
-    plugin.loginfo("");
-    plugin.loginfo("----------- VMTA plugin LOG START -----------");
+    this.loginfo("");
+    this.loginfo("----------- VMTA plugin LOG START -----------");
 
     if ( transaction.header.headers.hasOwnProperty("x-vmta") )
     {
@@ -88,42 +150,6 @@ exports.hook_queue_outbound = function (next, connection) {
     plugin.loginfo("Outbound IP : "+connection.transaction.notes.outbound_ip);
     plugin.loginfo("Outbound HOST : "+connection.transaction.notes.outbound_helo);
 
-    //Adding the header to notes before sent, we may need it in 'delivered/bounce/deffered' hooks
+    //Setting the header to notes before sent, we may need it in 'delivered/bounce/deferred' hooks
     connection.transaction.notes.header = connection.transaction.header;
-
-    outbound.send_email(connection.transaction, next);
-
-    plugin.loginfo("----------- VMTA plugin LOG END -----------");
-    plugin.loginfo("");
-};
-
-//Deny with passed message
-var denyWithMsg = function (context, next, msg) {
-    context.logerror(msg);
-    context.loginfo("----------- VMTA plugin LOG END -----------");
-    context.loginfo("");
-
-    return next(DENY, msg);
-};
-
-//Get list of local addresses
-var localAddresses = function () {
-    var os = require("os");
-
-    var interfaces = os.networkInterfaces();
-    var addresses = [];
-
-    for (var k in interfaces)
-    {
-        for (var k2 in interfaces[k])
-        {
-            var address = interfaces[k][k2];
-
-            if (address.family === "IPv4" && !address.internal) {
-                addresses.push(address.address);
-            }
-        }
-    }
-
-    return addresses;
 };
