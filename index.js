@@ -41,7 +41,7 @@ exports.init_interfaces = function (next)  {
 };
 
 exports.outbound = function (next, connection) {
-    checkVmtaParams(this, connection);
+    checkVmtaParams(next, this, connection);
 
     //Set the flag param 'vmta_checked' to avoid duplicate check in the both hooks
     connection.transaction.notes.vmta_checked = true;

@@ -1,6 +1,6 @@
 {
   "name": "haraka-plugin-vmta",
-  "version": "0.5.6",
+  "version": "0.5.9",
   "description": "Administer virtual MTAs for the outbound traffic",
   "main": "index.js",
   "scripts": {
