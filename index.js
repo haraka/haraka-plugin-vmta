@@ -1,9 +1,8 @@
 // virtual_mta
 //------------
-// documentation via: `haraka -h virtual_mta`
 
 //TODO: Uncomment this two lines in the real life-----
-//var outbound	= require('./outbound');
+//var outbound    = require('./outbound');
 //var constants = require('haraka-constants');
 //------------------------------------------------
 var ip          = require('ip').address(); //Main ip of local server
@@ -41,27 +40,14 @@ exports.init_interfaces = function (next)  {
 };
 
 exports.outbound = function (next, connection) {
-    checkVmtaParams(next, this, connection);
-
-    //Set the flag param 'vmta_checked' to avoid duplicate check in the both hooks
-    connection.transaction.notes.vmta_checked = true;
-
-    outbound.send_email(connection.transaction, next);
-
-    this.loginfo("----------- VMTA plugin LOG END -----------");
-    this.loginfo("");
+    checkVmtaParams(next, this, connection, "outbound");
 };
 
 exports.before_send = function (next, connection) {
     if ( !connection.transaction.notes.hasOwnProperty("vmta_checked") )
     {
         checkVmtaParams(next, this, connection);
-
-        this.loginfo("----------- VMTA plugin LOG END -----------");
-        this.loginfo("");
     }
-
-    return next();
 };
 
 //Deny with passed message
@@ -96,11 +82,14 @@ var localAddresses = function () {
 };
 
 //Check if the 'x-vmta' parameter is passed then retrieve the 'ip/host' else return the default ones
-var checkVmtaParams = function (next, plugin, connection){
+var checkVmtaParams = function (next, plugin, connection, type){
     var transaction = connection.transaction;
 
     plugin.loginfo("");
     plugin.loginfo("----------- VMTA plugin LOG START -----------");
+
+    //Set the flag param 'vmta_checked' to avoid duplicate check in the both hooks
+    connection.transaction.notes.vmta_checked = true;
 
     if ( transaction.header.headers.hasOwnProperty("x-vmta") )
     {
@@ -152,4 +141,17 @@ var checkVmtaParams = function (next, plugin, connection){
 
     //Setting the header to notes before sent, we may need it in 'delivered/bounce/deferred' hooks
     connection.transaction.notes.header = connection.transaction.header;
+
+    if( type == 'outbound' ) {
+        outbound.send_email(connection.transaction, next);
+
+        this.loginfo("----------- VMTA plugin LOG END -----------");
+        this.loginfo("");
+    } else {
+        this.loginfo("----------- VMTA plugin LOG END -----------");
+        this.loginfo("");
+
+        return next();
+    }
+
 };
