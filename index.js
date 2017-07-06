@@ -142,14 +142,14 @@ var checkVmtaParams = function (next, plugin, connection, type){
     //Setting the header to notes before sent, we may need it in 'delivered/bounce/deferred' hooks
     connection.transaction.notes.header = connection.transaction.header;
 
-    if( type == 'outbound' ) {
+    if ( type == 'outbound' ) {
         outbound.send_email(connection.transaction, next);
 
-        this.loginfo("----------- VMTA plugin LOG END -----------");
-        this.loginfo("");
+        plugin.loginfo("----------- VMTA plugin LOG END -----------");
+        plugin.loginfo("");
     } else {
-        this.loginfo("----------- VMTA plugin LOG END -----------");
-        this.loginfo("");
+        plugin.loginfo("----------- VMTA plugin LOG END -----------");
+        plugin.loginfo("");
 
         return next();
     }
