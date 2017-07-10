@@ -45,9 +45,9 @@ exports.outbound = function (next, connection) {
 
 exports.before_send = function (next, connection) {
     if ( !connection.transaction.notes.hasOwnProperty("vmta_checked") )
-    {
-        checkVmtaParams(next, this, connection);
-    }
+        checkVmtaParams(next, this, connection, "before_send");
+    else
+        return next();
 };
 
 //Deny with passed message
